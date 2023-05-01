@@ -6,24 +6,32 @@ const routes: Array<RouteRecordRaw> = [
     path: '/',
     name: 'home',
     component: HomeView,
-    children:[
+    children: [
       {
-        path:'goods',
-        name:'goods',
-        meta:{
+        path: 'goods',
+        name: 'goods',
+        meta: {
           isShow: true,
           title: "商品列表"
         },
-        component:() => import('../views/GoodsView.vue')
+        component: () => import('../views/GoodsView.vue')
       },
       {
-       path:'user',
-        name:'user',
-        meta:{
+        path: 'user',
+        name: 'user',
+        meta: {
           isShow: true,
           title: "用户列表"
         },
-        component:() => import('../views/UserView.vue')
+        component: () => import('../views/UserView.vue')
+      }, {
+        path: 'role',
+        name: 'role',
+        meta: {
+          isShow: true,
+          title: "角色列表"
+        },
+        component: () => import('../views/RoleView.vue')
       }
     ]
   },
