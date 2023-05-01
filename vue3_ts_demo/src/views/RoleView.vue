@@ -29,9 +29,12 @@ import { getRoleList } from "../request/api";
 import { defineComponent, onMounted, reactive, toRefs } from "vue";
 import { InitData, ListInt } from "@/type/role";
 import { ElMessage, ElMessageBox } from "element-plus";
+import { useRouter } from "vue-router";
+
 export default defineComponent({
   setup() {
     const data = reactive(new InitData());
+    const router = useRouter();
     onMounted(() => {
       getRoleList().then((res) => {
         data.list = res.data;
@@ -39,7 +42,13 @@ export default defineComponent({
     });
 
     const changeRole = (row: ListInt) => {
-      console.log(row);
+      router.push({
+        path: "authority",
+        query: {
+          id: row.roleId,
+          authority: row.authority,
+        },
+      });
     };
 
     const addRole = () => {
